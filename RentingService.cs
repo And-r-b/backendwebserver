@@ -21,7 +21,7 @@ class RentingService
         return bookInventory;
     }
 
-    public BorrowReceipt? BorrowBook(string bookTitle)
+    public BorrowReciept? BorrowBook(string bookTitle)
     {
         // Vi må finne om vi har boken
        Book? book = bookInventory
@@ -46,7 +46,7 @@ class RentingService
         else
         {
             // Lage ein ny kvittering
-            BorrowReceipt receipt = new BorrowReceipt(bookTitle);
+            BorrowReciept receipt = new BorrowReciept(bookTitle);
             //Oppdater utlånt listen vår
             currentlyBorrowed[book] = amountBorrowed + 1;
             //Returner kvittering
@@ -56,30 +56,28 @@ class RentingService
 }
 
 class Book
-{   
-    public string Title { get; set; }
-    public string Author { get; set; }
-
-    public Book(string title, string author)
-    {
-
-        Title = title;
-        Author = author;
-    }
-}
-
-class BorrowReceipt
 {
-    public DateTime BorrowedDate { get; set; }
-    public DateTime ReturnDate { get; set; }
-    public string BookTitle { get; set; }
+  public string Title { get; set; }
+  public string Author { get; set; }
 
-    public BorrowReceipt(string bookTitle)
-    {
-        BookTitle = bookTitle;
-        BorrowedDate = DateTime.Now;
-        ReturnDate = new DateTime().AddMonths(1);
-    }
+  public Book(string title, string author)
+  {
+    Title = title;
+    Author = author;
+  }
+}
+class BorrowReciept
+{
+  public DateTime BorrowingDate { get; set; }
+  public DateTime DueDate { get; set; }
+  public String BookTitle { get; set; }
+
+  public BorrowReciept(string bookTitle)
+  {
+    BookTitle = bookTitle;
+    BorrowingDate = DateTime.Today;
+    DueDate = DateTime.Today.AddDays(30);
+  }
 }
 
 class ReturnReceipt

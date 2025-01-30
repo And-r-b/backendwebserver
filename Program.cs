@@ -13,7 +13,7 @@ app.MapGet("/", () => {
 
 app.MapPost("/borrow", (BorrowedRequest borrowedRequest) => 
 {
-    BorrowReceipt? reciept = rentingService.BorrowBook(borrowedRequest.BookTitle);
+    BorrowReciept? reciept = rentingService.BorrowBook(borrowedRequest.BookTitle);
 
     if (reciept == null)
     {
