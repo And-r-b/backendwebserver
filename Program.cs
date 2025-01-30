@@ -21,7 +21,7 @@ app.MapPost("/borrow", (BorrowedRequest borrowedRequest) =>
     } 
     else
     {
-        return Results.Accepted($"Borrowed book: {reciept.BookTitle}");
+        return Results.Ok(reciept);
     }
 
 });

@@ -1,5 +1,3 @@
-using Microsoft.Net.Http.Headers;
-
 class RentingService
 {
     private Dictionary<Book, int> bookInventory;
