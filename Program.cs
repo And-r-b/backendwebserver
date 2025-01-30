@@ -10,8 +10,8 @@ app.MapGet("/", () => {
 });
 
 app.MapPost("/", (BorrowedRequest requestBody) => {
-    Console.WriteLine{$"Message: {requestBody.Message}"};
-    Console.WriteLine{$"Number: {requestBody.Number}"};
+    Console.WriteLine($"Message: {requestBody.Message}");
+    Console.WriteLine($"Number: {requestBody.Number}");
     return Results.Accepted();
 });
 
