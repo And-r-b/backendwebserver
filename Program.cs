@@ -4,19 +4,20 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => {
-    return "Get from '/'";
+    var jsonPayload = new {message = "Hello"};
+    return Results.Ok("All went well");
 });
 
 app.MapPost("/", () => {
-    return "Posting to '/'";
+    return Results.BadRequest();
 });
 
 app.MapPut("/", () => {
-    return "Updating to '/'";
+    return Results.Unauthorized();
 });
 
 app.MapDelete("/", () => {
-    return "Deleting '/'";
+    return Results.Created();
 });
 
 
