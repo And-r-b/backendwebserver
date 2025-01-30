@@ -1,3 +1,5 @@
+using Microsoft.Net.Http.Headers;
+
 class RentingService
 {
     private Dictionary<Book, int> bookInventory;
@@ -57,8 +59,8 @@ class RentingService
 
 class Book
 {   
-    public string Title;
-    public string Author;
+    public string Title { get; set; }
+    public string Author { get; set; }
 
     public Book(string title, string author)
     {

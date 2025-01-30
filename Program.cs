@@ -1,28 +1,17 @@
-using System.Reflection.Metadata.Ecma335;
-using Microsoft.AspNetCore.Http.Features;
-
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+RentingService rentingService = new RentingService();
+
+// rentingService.BorrowBook("Martian");
+// rentingService.ListAllBooks();
+
 app.MapGet("/", () => {
-    var jsonPayload = new {message = "Hello", content = "Testing testing"};
-    return Results.Ok(jsonPayload);
-});
 
-app.MapPost("/", (BorrowedRequest requestBody) => {
-    Console.WriteLine($"Message: {requestBody.Message}");
-    Console.WriteLine($"Number: {requestBody.Number}");
-    return Results.Accepted();
-});
+    var bookInventory = rentingService.ListAllBooks();
+    var booksList = bookInventory.Select(inventoryEntry => inventoryEntry.Key);
 
-app.MapPut("/", () => {
-    Console.WriteLine($"At dynamic segment");
-    return Results.Unauthorized();
+    return Results.Ok(booksList);
 });
-
-app.MapDelete("/", () => {
-    return Results.Created();
-});
-
 
 app.Run();
