@@ -14,7 +14,10 @@ class RentingService
             { new Book("Martian", "Jim"), 2 },
             { new Book("Foundation", "Jack"), 30 },
         };
-        
+        returnBook = new Dictionary<Book, int>{
+            { new Book("Martian", "Jim"), 1 },
+            { new Book("Foundation", "Jack"), 1 }, 
+        };
     }
 
     public Dictionary<Book, int> ListAllBooks()
@@ -54,7 +57,16 @@ class RentingService
             return receipt;
         }
     }
-    public ReturnReceipt? ReturnBook(string bookTitle);
+    public ReturnReceipt? ReturnBook(string bookTitle)
+    {
+        Book? book = returnBook
+        .Where((entry) => entry.Key.Title == bookTitle)
+        .First()
+        .Key;
+
+
+        return null;
+    }
 }
 
 
