@@ -2,6 +2,7 @@ class RentingService
 {
     private Dictionary<Book, int> bookInventory;
     private Dictionary<Book,int> currentlyBorrowed;
+    private Dictionary<Book,int> returnBook;
 
     public RentingService()
     {
@@ -53,6 +54,7 @@ class RentingService
             return receipt;
         }
     }
+    public ReturnReceipt? ReturnBook(string bookTitle);
 }
 
 
