@@ -1,7 +1,7 @@
 class RentingService
 {
     private Dictionary<Book, int> bookInventory;
-    private Dictionary<Book, > currentlyBorrowed;
+    private Dictionary<Book,int> currentlyBorrowed;
 
     public RentingService()
     {
@@ -53,23 +53,6 @@ class RentingService
             return receipt;
         }
     }
- public ReturnReceipt ReturnBook(string bookTitle)
-{
-    // Find the book in the borrowed list
-    Book book = currentlyBorrowed.Keys.First(b => b.Title == bookTitle);
-
-    // Get the due date from the borrowed books list
-    DateTime dueDate = currentlyBorrowed[book].DueDate;
-
-    // Create a return receipt
-    ReturnReceipt returnReceipt = new ReturnReceipt(bookTitle, dueDate);
-
-    // Remove from borrowed list and update inventory
-    currentlyBorrowed.Remove(book);
-    bookInventory[book]++; // Increase available copies
-
-    return returnReceipt; // Return the receipt confirming return
-}
 }
 
 
